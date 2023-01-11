@@ -1,0 +1,141 @@
+{
+  "authId": "${authId}",
+  "callbacks": [
+    {
+      "type": "TextOutputCallback",
+      "output": [
+        {
+          "name": "message",
+          "value": "Sign Up"
+        },
+        {
+          "name": "messageType",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "type": "NameCallback",
+      "output": [
+        {
+          "name": "prompt",
+          "value": "Full Name (optional)"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken2",
+          "value": "${creationName}"
+        }
+      ]
+    },
+    {
+      "type": "NameCallback",
+      "output": [
+        {
+          "name": "prompt",
+          "value": "Email Address"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken3",
+          "value": "${creationEmail}"
+        }
+      ]
+    },
+    {
+      "type": "NameCallback",
+      "output": [
+        {
+          "name": "prompt",
+          "value": "Mobile Number (optional)"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken4",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "REGISTRATION_1"
+        },
+        {
+          "name": "id",
+          "value": "stage"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken5",
+          "value": "stage"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "Sign Up"
+        },
+        {
+          "name": "id",
+          "value": "header"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken6",
+          "value": "header"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "Signing up is fast and easy.<br>Already have an account? <a href=\"#/service/Login\">Sign In</a>"
+        },
+        {
+          "name": "id",
+          "value": "description"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken7",
+          "value": "description"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": ""
+        },
+        {
+          "name": "id",
+          "value": "pagePropsJSON"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken8"
+        }
+      ]
+    }
+  ],
+  "status": 200,
+  "ok": true,
+  "stage": "REGISTRATION_1"
+}

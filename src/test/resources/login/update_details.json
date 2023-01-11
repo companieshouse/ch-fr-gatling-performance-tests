@@ -1,0 +1,145 @@
+{
+  "authId": "${authId}",
+  "callbacks": [
+    {
+      "type": "TextOutputCallback",
+      "output": [
+        {
+          "name": "message",
+          "value": "Update your personal details"
+        },
+        {
+          "name": "messageType",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "PHONE"
+        },
+        {
+          "name": "id",
+          "value": "PHONE"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken2",
+          "value": "PHONE"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "IGNOREME"
+        },
+        {
+          "name": "id",
+          "value": "IGNOREME"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken3",
+          "value": "IGNOREME"
+        }
+      ]
+    },
+    {
+      "type": "NameCallback",
+      "output": [
+        {
+          "name": "prompt",
+          "value": "What is your mobile number? (optional)"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken4",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "EWF_PROFILE"
+        },
+        {
+          "name": "id",
+          "value": "stage"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken5",
+          "value": "stage"
+        }
+      ]
+    },
+    {
+      "type": "ConfirmationCallback",
+      "output": [
+        {
+          "name": "prompt",
+          "value": "Do you want to skip?"
+        },
+        {
+          "name": "messageType",
+          "value": 0
+        },
+        {
+          "name": "options",
+          "value": [
+            "SKIP",
+            "SUBMIT"
+          ]
+        },
+        {
+          "name": "optionType",
+          "value": -1
+        },
+        {
+          "name": "defaultOption",
+          "value": 1
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken6",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "{}"
+        },
+        {
+          "name": "id",
+          "value": "pagePropsJSON"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken7"
+        }
+      ]
+    }
+  ],
+  "status": 200,
+  "ok": true,
+  "stage": "EWF_PROFILE"
+}
