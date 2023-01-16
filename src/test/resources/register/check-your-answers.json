@@ -25,7 +25,7 @@
       "input": [
         {
           "name": "IDToken2",
-          "value": "${creationName}"
+          "value": "${userName}"
         }
       ]
     },
@@ -40,7 +40,7 @@
       "input": [
         {
           "name": "IDToken3",
-          "value": "${creationEmail}"
+          "value": "${userEmail}"
         }
       ]
     },

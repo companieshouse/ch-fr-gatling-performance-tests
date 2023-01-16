@@ -13,6 +13,8 @@ class RegisterUser extends Simulation {
   val uiAccountPassword = System.getenv("UI_ACCOUNT_PASSWORD")
   val environmentCookieName = System.getenv("ENV_COOKIE_NAME")
 
+  val usersFeeder = csv("data/users.csv")
+
   // 1 Http Conf
   val httpConf = http.baseUrl(fidcUrl)
     .header("Accept-API-Version", "resource=1.0, protocol=2.1")
@@ -20,6 +22,7 @@ class RegisterUser extends Simulation {
 
   // 2 Scenario Definition
   val scn = scenario("Register User")
+    .feed(usersFeeder)
     .exec(http("Register")
       .get(uiUrl + "account/register/_start")
       .header("Accept", "text/html")
@@ -31,8 +34,6 @@ class RegisterUser extends Simulation {
       .post("am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHRegistration")
       .check(jsonPath("$.authId").saveAs("authId")))
 
-    .exec(_.set("creationName", "LoadTestUser"))
-    .exec(_.set("creationEmail", "loadtest-6@companieshouse.gov.uk"))
     .exec(http("Confirm Answers")
       .post("am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHRegistration")
       .body(ElFileBody("register/check-your-answers.json")).asJson
@@ -51,7 +52,6 @@ class RegisterUser extends Simulation {
       .check(jsonPath("$.authId").saveAs("authId")))
 
   //Enter password twice
-    .exec(_.set("creationPassword","L3tM3In1234!"))
     .exec(http("Verify Select Password")
       .post("am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHVerifyReg&token=${registrationJwt}")
       .body(ElFileBody("register/enter_password_twice.json")).asJson

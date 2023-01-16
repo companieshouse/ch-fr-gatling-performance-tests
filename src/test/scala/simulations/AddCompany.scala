@@ -14,8 +14,12 @@ class AddCompany extends Simulation {
 
   val httpConf = http.baseUrl(fidcUrl)
 
+  val usersFeeder = csv("data/users.csv")
+  val companiesFeeder = csv("data/companies.csv")
+
   //login
   val scn = scenario("Add Company")
+    .feed(usersFeeder)
     .exec(http("Login Page UI")
       .get(uiUrl + "account/login")
       .header("Accept", "text/html")
@@ -29,8 +33,6 @@ class AddCompany extends Simulation {
       .header("Content-Type", "application/json")
       .check(jsonPath("$.authId").saveAs("authId")))
 
-    .exec(_.set("userName", "loadtest-3@companieshouse.gov.uk"))
-    .exec(_.set("password", "L3tM3In1234!"))
     .exec(http("Enter Credentials")
       .post("am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHWebFiling-Login")
       .header("Accept-API-Version", "resource=1.0, protocol=2.1")
@@ -66,7 +68,6 @@ class AddCompany extends Simulation {
     .exec(http("Access Token")
       .post("am/oauth2/realms/root/realms/alpha/access_token")
       .header("Content-Type", "application/x-www-form-urlencoded")
-      .header("XXX", "${returnedCode}")
       .header("cookie", environmentCookieName + "=${tokenId}")
       .formParam("grant_type", "authorization_code")
       .formParam("code", "${returnedCode}")
@@ -111,8 +112,7 @@ class AddCompany extends Simulation {
       .header("cookie", environmentCookieName + "=${tokenId}")
       .check(status.is(200), jsonPath("$.authId").saveAs("authId")))
 
-    .exec(_.set("companyNumber", "00002065"))
-    .exec(_.set("companyName", "LLOYDS BANK PLC 1"))
+    .feed(companiesFeeder)
     .exec(http("Enter Company Details")
       .post("am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHCompanyAssociation")
       .header("Accept-API-Version", "resource=1.0, protocol=2.1")
@@ -129,7 +129,6 @@ class AddCompany extends Simulation {
       .body(ElFileBody("login/confirm_company_details.json")).asJson
       .check(jsonPath("$.authId").saveAs("authId")))
 
-    .exec(_.set("authCode", "222222"))
     .exec(http("Enter Auth Code")
       .post("am/json/realms/root/realms/alpha/authenticate?authIndexType=service&authIndexValue=CHCompanyAssociation")
       .header("Accept-API-Version", "resource=1.0, protocol=2.1")
