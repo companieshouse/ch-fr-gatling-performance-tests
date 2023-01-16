@@ -3,16 +3,19 @@ package simulations
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
+/*
+
+This test is currently out of scope, if it is required in the future then the filing for a company step needs
+some work in order for the test to run successfully
+
+ */
 class FileForCompany extends Simulation {
 
-  val fidcUrl = System.getenv("FIDC_URL") //https://idam-staging.company-information.service.gov.uk/
-  val uiUrl = System.getenv("UI_URL") //https://idam-ui-staging.company-information.service.gov.uk/
-  val uiAccountUserName = System.getenv("UI_ACCOUNT_USERNAME") //ch-account-ui
-  val uiAccountPassword = System.getenv("UI_ACCOUNT_PASSWORD") //N8w8lQCnxs
-  val environmentCookieName = System.getenv("ENV_COOKIE_NAME") //8fa4178f20bdf21 for Staging
-
-//  val httpConf = http.baseUrl("https://ewf-stg-aws.companieshouse.gov.uk/")
-//    .header("Content-Type", "text/html")
+  val fidcUrl = System.getenv("FIDC_URL")
+  val uiUrl = System.getenv("UI_URL")
+  val uiAccountUserName = System.getenv("UI_ACCOUNT_USERNAME")
+  val uiAccountPassword = System.getenv("UI_ACCOUNT_PASSWORD")
+  val environmentCookieName = System.getenv("ENV_COOKIE_NAME")
 
   val httpConf = http.baseUrl(fidcUrl)
 

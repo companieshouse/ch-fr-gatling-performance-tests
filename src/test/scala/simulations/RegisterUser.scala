@@ -7,16 +7,11 @@ import scala.util.Random
 
 class RegisterUser extends Simulation {
 
-  var creationEmail = "loadtest000@companieshouse.gov.uk"
-  var creationPassword = "L3tM3In1234!"
-  var creationName = "Load Test User"
-  var creationMobile = "07123456789"
-
-  val fidcUrl = System.getenv("FIDC_URL") //https://idam-staging.company-information.service.gov.uk/
-  val uiUrl = System.getenv("UI_URL") //https://idam-ui-staging.company-information.service.gov.uk/
-  val uiAccountUserName = System.getenv("UI_ACCOUNT_USERNAME") //ch-account-ui
-  val uiAccountPassword = System.getenv("UI_ACCOUNT_PASSWORD") //N8w8lQCnxs
-  val environmentCookieName = System.getenv("ENV_COOKIE_NAME") //8fa4178f20bdf21 for Staging
+  val fidcUrl = System.getenv("FIDC_URL")
+  val uiUrl = System.getenv("UI_URL")
+  val uiAccountUserName = System.getenv("UI_ACCOUNT_USERNAME")
+  val uiAccountPassword = System.getenv("UI_ACCOUNT_PASSWORD")
+  val environmentCookieName = System.getenv("ENV_COOKIE_NAME")
 
   // 1 Http Conf
   val httpConf = http.baseUrl(fidcUrl)
@@ -76,7 +71,7 @@ class RegisterUser extends Simulation {
     .exec(http("Logout")
       .post("am/json/realms/root/realms/alpha/sessions/?_action=logout")
       .header("Accept-API-Version", "resource=3.1, protocol=1.0")
-      .header(environmentCookieName, "${tokenId}")//iplanetdirectorypro cookie
+      .header(environmentCookieName, "${tokenId}")
       .check(jsonPath("$.result").saveAs("result")))
 
   // 3 Load Scenario

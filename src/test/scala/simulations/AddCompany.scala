@@ -5,11 +5,11 @@ import io.gatling.http.Predef._
 
 class AddCompany extends Simulation {
 
-  val fidcUrl = System.getenv("FIDC_URL") //https://idam-staging.company-information.service.gov.uk/
-  val uiUrl = System.getenv("UI_URL") //https://idam-ui-staging.company-information.service.gov.uk/
-  val uiAccountUserName = System.getenv("UI_ACCOUNT_USERNAME") //ch-account-ui
-  val uiAccountPassword = System.getenv("UI_ACCOUNT_PASSWORD") //N8w8lQCnxs
-  val environmentCookieName = System.getenv("ENV_COOKIE_NAME") //8fa4178f20bdf21 for Staging
+  val fidcUrl = System.getenv("FIDC_URL")
+  val uiUrl = System.getenv("UI_URL")
+  val uiAccountUserName = System.getenv("UI_ACCOUNT_USERNAME")
+  val uiAccountPassword = System.getenv("UI_ACCOUNT_PASSWORD")
+  val environmentCookieName = System.getenv("ENV_COOKIE_NAME")
   val perfTestClientSecret = System.getenv("CLIENT_SECRET")
 
   val httpConf = http.baseUrl(fidcUrl)
