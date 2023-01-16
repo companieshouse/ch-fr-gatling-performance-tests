@@ -57,7 +57,7 @@ class AddCompany extends Simulation {
     .pause(5)
   //authorize
     .exec(http("Authorize - get Authorization code")
-      .get("am/oauth2/authorize?response_type=code&client_id=PerfTestClient&redirect_uri=https://idam-ui.amido.aws.chdev.org/account/home/&scope=openid%20profile%20fr:idm:*%20phone%20email")
+      .get("am/oauth2/authorize?response_type=code&client_id=PerfTestClient&redirect_uri=" + uiUrl + "account/home/&scope=openid%20profile%20fr:idm:*%20phone%20email")
       .header("cookie", environmentCookieName + "=${tokenId}")
       .check(status.is(200), currentLocationRegex(".*?code=(.*)&iss=.*").saveAs("returnedCode")))
 
@@ -77,31 +77,10 @@ class AddCompany extends Simulation {
     .pause(5)
 
   //hit userinfo endpoint (x4)
-    .exec(http("UserInfo")
-      .get("am/oauth2/realms/root/realms/alpha/userinfo")
-      .header("Authorization", "Bearer ${access_token}")
-      .check(status.is(200)))
-
-    .exec(http("UserInfo")
-      .get("am/oauth2/realms/root/realms/alpha/userinfo")
-      .header("Authorization", "Bearer ${access_token}")
-      .check(status.is(200)))
-
-    .exec(http("UserInfo")
-      .get("am/oauth2/realms/root/realms/alpha/userinfo")
-      .header("Authorization", "Bearer ${access_token}")
-      .check(status.is(200)))
-
-    .exec(http("UserInfo")
-      .get("am/oauth2/realms/root/realms/alpha/userinfo")
-      .header("Authorization", "Bearer ${access_token}")
-      .check(status.is(200)))
+    .exec(getUserInfo())
 
   //hit company endpoint
-    .exec(http("Company Endpoint")
-      .get("openidm/endpoint/company?currentPage=1&pageSize=9999&maxPages=10")
-      .header("Authorization", "Bearer ${access_token}")
-      .check(status.is(200)))
+    .exec(getCompanies())
 
   //Your companies link (UI)
     .exec(http("Your companies UI")
@@ -161,10 +140,7 @@ class AddCompany extends Simulation {
 
     pause(5)
 
-    .exec(http("Company Endpoint")
-      .get("openidm/endpoint/company?currentPage=1&pageSize=9999&maxPages=10")
-      .header("Authorization", "Bearer ${access_token}")
-      .check(status.is(200)))
+    .exec(getCompanies())
 
   //Logout
     .exec(http("Logout")
@@ -176,4 +152,22 @@ class AddCompany extends Simulation {
   setUp(
     scn.inject(atOnceUsers(1))
   ).protocols(httpConf)
+
+  def getUserInfo() = {
+    repeat(4) {
+      exec(http("UserInfo")
+      .get("am/oauth2/realms/root/realms/alpha/userinfo")
+        .header("Authorization", "Bearer ${access_token}")
+        .check(status.is(200))
+      )
+    }
+  }
+
+  def getCompanies() = {
+      exec(http("UserInfo")
+        .get("openidm/endpoint/company?currentPage=1&pageSize=9999&maxPages=10")
+        .header("Authorization", "Bearer ${access_token}")
+        .check(status.is(200))
+      )
+  }
 }
