@@ -1,0 +1,92 @@
+{
+  "authId": "${authId}",
+  "callbacks": [
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "REGISTRATION_CONFIRMATION"
+        },
+        {
+          "name": "id",
+          "value": "stage"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken1",
+          "value": "stage"
+        }
+      ]
+    },
+    {
+      "type": "TextOutputCallback",
+      "output": [
+        {
+          "name": "message",
+          "value": "{userName=${userEmail}, givenName=, telephoneNumber=, mail=${userEmail}}"
+        },
+        {
+          "name": "messageType",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "type": "ConfirmationCallback",
+      "output": [
+        {
+          "name": "prompt",
+          "value": "Do you want to continue or change these details?"
+        },
+        {
+          "name": "messageType",
+          "value": 0
+        },
+        {
+          "name": "options",
+          "value": [
+            "CONTINUE",
+            "CHANGE"
+          ]
+        },
+        {
+          "name": "optionType",
+          "value": -1
+        },
+        {
+          "name": "defaultOption",
+          "value": 0
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken3",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "{\"fullName\":\"\",\"emailAddress\":\"${userEmail}\",\"mobileNumber\":\"\"}"
+        },
+        {
+          "name": "id",
+          "value": "pagePropsJSON"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken4"
+        }
+      ]
+    }
+  ],
+  "status": 200,
+  "ok": true,
+  "stage": "REGISTRATION_CONFIRMATION"
+}

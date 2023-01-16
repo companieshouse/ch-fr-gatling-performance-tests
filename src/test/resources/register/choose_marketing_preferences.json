@@ -1,0 +1,94 @@
+{
+  "authId": "${authId}",
+  "callbacks": [
+    {
+      "type": "BooleanAttributeInputCallback",
+      "output": [
+        {
+          "name": "name",
+          "value": "preferences/updates"
+        },
+        {
+          "name": "prompt",
+          "value": "Emails to tell you about a new message in your account"
+        },
+        {
+          "name": "required",
+          "value": false
+        },
+        {
+          "name": "policies",
+          "value": {}
+        },
+        {
+          "name": "failedPolicies",
+          "value": []
+        },
+        {
+          "name": "validateOnly",
+          "value": false
+        },
+        {
+          "name": "value",
+          "value": false
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken1"
+        },
+        {
+          "name": "IDToken1validateOnly"
+        }
+      ],
+      "_id": 0
+    },
+    {
+      "type": "BooleanAttributeInputCallback",
+      "output": [
+        {
+          "name": "name",
+          "value": "preferences/marketing"
+        },
+        {
+          "name": "prompt",
+          "value": "Emails about marketing, communication campaigns, or user research activities"
+        },
+        {
+          "name": "required",
+          "value": false
+        },
+        {
+          "name": "policies",
+          "value": {}
+        },
+        {
+          "name": "failedPolicies",
+          "value": []
+        },
+        {
+          "name": "validateOnly",
+          "value": false
+        },
+        {
+          "name": "value",
+          "value": false
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken2"
+        },
+        {
+          "name": "IDToken2validateOnly"
+        }
+      ],
+      "_id": 1
+    }
+  ],
+  "stage": "EMAIL_CONSENT",
+  "header": "Please enter your email preferences",
+  "description": "Please enter your email preferences",
+  "status": 200,
+  "ok": true
+}

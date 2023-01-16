@@ -1,0 +1,164 @@
+{
+  "authId": "${authId}",
+  "callbacks": [
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "{\"phoneNumber\":\"***** **5 685\",\"emailAddress\":\"\",\"type\":\"sms\",\"secretOtp\":\"${secretOtp}\"}"
+        },
+        {
+          "name": "id",
+          "value": "pagePropsJSON"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken1"
+        }
+      ]
+    },
+    {
+      "type": "TextOutputCallback",
+      "output": [
+        {
+          "name": "message",
+          "value": "Please check your phone"
+        },
+        {
+          "name": "messageType",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "5d5ea9ae-58bb-42fd-8576-14f28fa4d1b7"
+        },
+        {
+          "name": "id",
+          "value": "notificationId"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken3",
+          "value": "notificationId"
+        }
+      ]
+    },
+    {
+      "type": "PasswordCallback",
+      "output": [
+        {
+          "name": "prompt",
+          "value": "Security Code"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken4",
+          "value": "${secretOtp}"
+        }
+      ]
+    },
+    {
+      "type": "ConfirmationCallback",
+      "output": [
+        {
+          "name": "prompt",
+          "value": "Do you want to resend?"
+        },
+        {
+          "name": "messageType",
+          "value": 0
+        },
+        {
+          "name": "options",
+          "value": [
+            "RESEND",
+            "NEXT"
+          ]
+        },
+        {
+          "name": "optionType",
+          "value": -1
+        },
+        {
+          "name": "defaultOption",
+          "value": 1
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken5",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "REGISTRATION_MFA"
+        },
+        {
+          "name": "id",
+          "value": "stage"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken6",
+          "value": "stage"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "Please enter the code you received"
+        },
+        {
+          "name": "id",
+          "value": "description"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken7",
+          "value": "description"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "Please enter your code"
+        },
+        {
+          "name": "id",
+          "value": "header"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken8",
+          "value": "header"
+        }
+      ]
+    }
+  ],
+  "status": 200,
+  "ok": true,
+  "stage": "REGISTRATION_MFA"
+}

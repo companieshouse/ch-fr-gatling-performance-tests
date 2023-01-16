@@ -1,0 +1,71 @@
+{
+  "authId": "${authId}",
+  "callbacks": [
+    {
+      "type": "TextOutputCallback",
+      "output": [
+        {
+          "name": "message",
+          "value": "Please enter the company auth code."
+        },
+        {
+          "name": "messageType",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "type": "NameCallback",
+      "output": [
+        {
+          "name": "prompt",
+          "value": "Enter Auth Code"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken2",
+          "value": "${authCode}"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "COMPANY_ASSOCIATION_3"
+        },
+        {
+          "name": "id",
+          "value": "stage"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken3",
+          "value": "stage"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "{\"company\":{\"name\":\"LLOYDS BANK PLC 1\"}}"
+        },
+        {
+          "name": "id",
+          "value": "pagePropsJSON"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken4",
+          "value": "pagePropsJSON"
+        }
+      ]
+    }
+  ]
+}

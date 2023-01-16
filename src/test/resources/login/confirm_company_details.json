@@ -1,0 +1,92 @@
+{
+  "authId": "${authId}",
+  "callbacks": [
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "COMPANY_ASSOCIATION_2"
+        },
+        {
+          "name": "id",
+          "value": "stage"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken1",
+          "value": "stage"
+        }
+      ]
+    },
+    {
+      "type": "TextOutputCallback",
+      "output": [
+        {
+          "name": "message",
+          "value": "{\"company\":{\"name\":\"${companyName}\",\"number\":\"${companyNumber}\",\"status\":\"active\"}}"
+        },
+        {
+          "name": "messageType",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "type": "HiddenValueCallback",
+      "output": [
+        {
+          "name": "value",
+          "value": "{\"company\":{\"name\":\"${companyName}\",\"number\":\"${companyNumber}\",\"status\":\"active\",\"creationDate\":\"1990-11-12T00:00:00Z\",\"type\":\"ltd\",\"addressLine1\":\"110 Fulbourn Road\",\"addressLine2\":\"Cambridge\",\"region\":null,\"postalCode\":\"CB1 9NJ\"}}"
+        },
+        {
+          "name": "id",
+          "value": "pagePropsJSON"
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken3"
+        }
+      ]
+    },
+    {
+      "type": "ConfirmationCallback",
+      "output": [
+        {
+          "name": "prompt",
+          "value": "Do you want to file for this company?"
+        },
+        {
+          "name": "messageType",
+          "value": 0
+        },
+        {
+          "name": "options",
+          "value": [
+            "YES",
+            "NO"
+          ]
+        },
+        {
+          "name": "optionType",
+          "value": -1
+        },
+        {
+          "name": "defaultOption",
+          "value": 0
+        }
+      ],
+      "input": [
+        {
+          "name": "IDToken4",
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "status": 200,
+  "ok": true,
+  "stage": "COMPANY_ASSOCIATION_2"
+}
